@@ -1,0 +1,17 @@
+Navegue ate a raiz projeto
+
+abra o arquivo .env e coloque as informações do banco de dados com o seu banco.
+
+execute o comando "npm install" para instalar as bibliotecas.
+
+execute o "npm install cross-env --save-dev".
+
+execute o comando "npm run db:migrate";
+
+rode o projeto "npm start".
+
+acesse a porta 
+http://localhost:3000/
+
+
+
