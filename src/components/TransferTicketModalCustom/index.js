@@ -24,6 +24,7 @@ import ButtonWithSpinner from "../ButtonWithSpinner";
 import toastError from "../../errors/toastError";
 import useQueues from "../../hooks/useQueues";
 import { AuthContext } from "../../context/Auth/AuthContext";
+import ErrorMessage from "../ContactModal/errorMessage";
 
 const useStyles = makeStyles((theme) => ({
   maxWidth: {
@@ -51,6 +52,8 @@ const TransferTicketModalCustom = ({ modalOpen, onClose, ticketid }) => {
   const [selectedWhatsapp, setSelectedWhatsapp] = useState("");
   const { user } = useContext(AuthContext);
   const { companyId, whatsappId } = user;
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   useEffect(() => {
     return () => {
@@ -107,6 +110,7 @@ const TransferTicketModalCustom = ({ modalOpen, onClose, ticketid }) => {
           setOptions(data.users);
           setLoading(false);
         } catch (err) {
+          console.log('dentro do catch do delaydebounce do transferticketmodalcustom');
           setLoading(false);
           toastError(err);
         }
@@ -151,12 +155,22 @@ const TransferTicketModalCustom = ({ modalOpen, onClose, ticketid }) => {
 
       history.push(`/tickets`);
     } catch (err) {
+
+      // setErrorMessage("Não foi possível fazer a transferencia deste contato, pois já existe um atendimento em aberto com este número.");
+      console.log("erro no catch do transfertickemodalcustom ", err);    
       setLoading(false);
       toastError(err);
     }
   };
 
+  const handleCloseError = () => {
+    setErrorMessage(''); // Limpa a mensagem de erro
+  };	
+
+
   return (
+    <div>
+      {errorMessage && <ErrorMessage message={errorMessage} onClose={handleCloseError} />}			
     <Dialog open={modalOpen} onClose={handleClose} maxWidth="lg" scroll="paper">
       <form onSubmit={handleSaveTicket}>
         <DialogTitle id="form-dialog-title">
@@ -288,6 +302,7 @@ const TransferTicketModalCustom = ({ modalOpen, onClose, ticketid }) => {
         </DialogActions>
       </form>
     </Dialog>
+    </div>
   );
 };
 

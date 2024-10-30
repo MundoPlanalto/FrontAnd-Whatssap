@@ -23,6 +23,8 @@ import {  WhatsApp } from "@material-ui/icons";
 import { Grid, ListItemText, MenuItem, Select } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { toast } from "react-toastify";
+import ErrorMessage from "../ContactModal/errorMessage";
+
 //import ShowTicketOpen from "../ShowTicketOpenModal";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,6 +45,8 @@ const filter = createFilterOptions({
 const NewTicketModal = ({ modalOpen, onClose, initialContact }) => {
   const classes = useStyles();
   const [options, setOptions] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   const [loading, setLoading] = useState(false);
   const [searchParam, setSearchParam] = useState("");
@@ -163,20 +167,24 @@ const NewTicketModal = ({ modalOpen, onClose, initialContact }) => {
 
       onClose(ticket);
     } catch (err) {
-      
-      const ticket  = JSON.parse(err.response.data.error);
 
-      if (ticket.userId !== user?.id) {
-        setOpenAlert(true);
-        setUserTicketOpen(ticket.user.name);
-        setQueueTicketOpen(ticket.queue.name);
-      } else {
-        setOpenAlert(false);
-        setUserTicketOpen("");
-        setQueueTicketOpen("");
-        setLoading(false);
-        onClose(ticket);
-      }
+      setErrorMessage("Não foi possível abrir um atendimento com este contato, pois já existe um atendimento com o mesmo em andamento.")
+      console.log('ver o que vem no catch aqui de new ticket ', err);
+
+      
+      // const ticket  = JSON.parse(err.response.data.error);
+
+      // if (ticket.userId !== user?.id) {
+      //   setOpenAlert(true);
+      //   setUserTicketOpen(ticket.user.name);
+      //   setQueueTicketOpen(ticket.queue.name);
+      // } else {
+      //   setOpenAlert(false);
+      //   setUserTicketOpen("");
+      //   setQueueTicketOpen("");
+      //   setLoading(false);
+      //   onClose(ticket);
+      // }
     }  
     setLoading(false);
   };
@@ -278,7 +286,13 @@ const NewTicketModal = ({ modalOpen, onClose, initialContact }) => {
     return null;
   }
 
+  const handleCloseError = () => {
+    setErrorMessage(''); // Limpa a mensagem de erro
+  };
+
   return (
+    <div>
+      {errorMessage && <ErrorMessage message={errorMessage} onClose={handleCloseError} />}
     <>
       <ContactModal
         open={contactModalOpen}
@@ -410,6 +424,7 @@ const NewTicketModal = ({ modalOpen, onClose, initialContact }) => {
 			  /> */}
       </Dialog >
     </>
+    </div>
   );
 };
 export default NewTicketModal;

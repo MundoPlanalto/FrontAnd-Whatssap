@@ -444,7 +444,7 @@ transferTicketModal: {
       users: "Usuarios",
       settings: "Configuraciones",
       helps: "Ayuda",
-      // messagesAPI: "API",
+      messagesAPI: "API",
       schedules: "Agendamientos",
       campaigns: "Campañas",
       annoucements: "Anuncios",
@@ -505,20 +505,20 @@ transferTicketModal: {
       deleteAllMessage: "¿Estás seguro de que deseas eliminar todas las listas?",
     },
   },
-  // messagesAPI: {
-  //   title: "API",
-  //   textMessage: {
-  //     number: "Número",
-  //     body: "Mensaje",
-  //     token: "Token registrado",
-  //   },
-  //   mediaMessage: {
-  //     number: "Número",
-  //     body: "Nombre del archivo",
-  //     media: "Archivo",
-  //     token: "Token registrado",
-  //   },
-  // },
+  messagesAPI: {
+    title: "API",
+    textMessage: {
+      number: "Número",
+      body: "Mensaje",
+      token: "Token registrado",
+    },
+    mediaMessage: {
+      number: "Número",
+      body: "Nombre del archivo",
+      media: "Archivo",
+      token: "Token registrado",
+    },
+  },
   notifications: {
     noTickets: "No hay notificaciones.",
   },

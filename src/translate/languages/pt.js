@@ -447,7 +447,7 @@ const messages = {
           users: "Usuários",
           settings: "Configurações",
           helps: "Ajuda",
-          // messagesAPI: "API",
+          messagesAPI: "API",
           schedules: "Agendamentos",
           campaigns: "Campanhas",
           annoucements: "Informativos",
@@ -508,20 +508,20 @@ const messages = {
           deleteAllMessage: "Tem certeza que deseja deletar todas as listas?",
         },
       },
-      // messagesAPI: {
-      //   title: "API",
-      //   textMessage: {
-      //     number: "Número",
-      //     body: "Mensagem",
-      //     token: "Token cadastrado",
-      //   },
-      //   mediaMessage: {
-      //     number: "Número",
-      //     body: "Nome do arquivo",
-      //     media: "Arquivo",
-      //     token: "Token cadastrado",
-      //   },
-      // },
+      messagesAPI: {
+        title: "API",
+        textMessage: {
+          number: "Número",
+          body: "Mensagem",
+          token: "Token cadastrado",
+        },
+        mediaMessage: {
+          number: "Número",
+          body: "Nome do arquivo",
+          media: "Arquivo",
+          token: "Token cadastrado",
+        },
+      },
       notifications: {
         noTickets: "Nenhuma notificação.",
       },

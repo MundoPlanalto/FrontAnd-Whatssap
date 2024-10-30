@@ -98,12 +98,12 @@ const Routes = () => {
                 <Route exact path="/prompts" component={Prompts} isPrivate />
                 <Route exact path="/queue-integration" component={QueueIntegration} isPrivate />
 
-                {/* <Route
+                <Route
                   exact
                   path="/messages-api"
                   component={MessagesAPI}
                   isPrivate
-                /> */}
+                />
                 <Route
                   exact
                   path="/settings"

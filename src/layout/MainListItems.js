@@ -475,7 +475,7 @@ const MainListItems = (props) => {
               primary={i18n.t("mainDrawer.listItems.users")}
               icon={<PeopleAltOutlinedIcon />}
             />
-            {/* {showExternalApi && (
+            {showExternalApi && (
               <>
                 <ListItemLink
                   to="/messages-api"
@@ -483,7 +483,7 @@ const MainListItems = (props) => {
                   icon={<CodeRoundedIcon />}
                 />
               </>
-            )} */}
+            )}
             <ListItemLink
               to="/financeiro"
               primary={i18n.t("mainDrawer.listItems.financeiro")}

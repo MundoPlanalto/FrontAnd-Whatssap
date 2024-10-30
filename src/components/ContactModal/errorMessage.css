@@ -1,0 +1,46 @@
+/* ErrorMessage.css */
+.error-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9000; /* Assegura que o modal fique acima de outros elementos */
+}
+
+.error-modal {
+    background-color: #fff; /* Fundo branco do modal */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra ao redor do modal */
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    z-index: 9001;
+}
+
+.error-modal h2 {
+    margin: 0 0 10px;
+    color: red; /* Cor do título em vermelho */
+}
+
+.error-modal p {
+    margin: 0 0 20px;
+}
+
+.error-modal button {
+    background-color: red; /* Cor do botão */
+    color: white; /* Texto do botão em branco */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error-modal button:hover {
+    background-color: darkred; /* Cor do botão ao passar o mouse */
+}

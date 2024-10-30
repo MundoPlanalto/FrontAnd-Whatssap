@@ -16,6 +16,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ErrorMessage from "./errorMessage";
 
 import { i18n } from "../../translate/i18n";
 
@@ -64,6 +65,7 @@ const ContactSchema = Yup.object().shape({
 const ContactModal = ({ open, onClose, contactId, initialValues, onSave }) => {
 	const classes = useStyles();
 	const isMounted = useRef(true);
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const initialState = {
 		name: "",
@@ -122,11 +124,18 @@ const ContactModal = ({ open, onClose, contactId, initialValues, onSave }) => {
 			}
 			toast.success(i18n.t("contactModal.success"));
 		} catch (err) {
-			toastError(err);
+            setErrorMessage("Não foi possível cadastrar este contato, pois já existe um contato com este número.");
+            console.log("erro salvar contact em handlesavecontact em contactmodal", err);
 		}
 	};
 
+    const handleCloseError = () => {
+        setErrorMessage(''); // Limpa a mensagem de erro
+    };	
+
 	return (
+		<div>
+		{errorMessage && <ErrorMessage message={errorMessage} onClose={handleCloseError} />}
 		<div className={classes.root}>
 			<Dialog open={open} onClose={handleClose} maxWidth="lg" scroll="paper">
 				<DialogTitle id="form-dialog-title">
@@ -277,6 +286,7 @@ const ContactModal = ({ open, onClose, contactId, initialValues, onSave }) => {
 					)}
 				</Formik>
 			</Dialog>
+		</div>
 		</div>
 	);
 };

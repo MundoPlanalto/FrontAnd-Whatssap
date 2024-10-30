@@ -19,6 +19,7 @@ import {
   DoneAll,
   ExpandMore,
   GetApp,
+  Check
 } from "@material-ui/icons";
 
 import MarkdownWrapper from "../MarkdownWrapper";
@@ -257,6 +258,13 @@ const useStyles = makeStyles((theme) => ({
     verticalAlign: "middle",
     marginLeft: 4,
   },
+
+  ackCheckIcon: {
+    // color: green[500],
+    fontSize: 18,
+    verticalAlign: "middle",
+    marginLeft: 4,
+  },  
 
   downloadMedia: {
     display: "flex",
@@ -511,7 +519,8 @@ const MessagesList = ({ ticket, ticketId, isGroup }) => {
 
   const renderMessageAck = (message) => {
     if (message.ack === 1) {
-      return <AccessTime fontSize="small" className={classes.ackIcons} />;
+      return <Check fontSize="small" className={classes.ackCheckIcon} />;
+      // return <AccessTime fontSize="small" className={classes.ackIcons} />;
     }
     if (message.ack === 2) {
       return <Done fontSize="small" className={classes.ackIcons} />;
