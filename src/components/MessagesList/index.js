@@ -350,7 +350,8 @@ const MessagesList = ({ ticket, ticketId, isGroup }) => {
       const fetchMessages = async () => {
         if (ticketId === undefined) return;
         try {
-          const { data } = await api.get("/messages/" + ticketId, {
+          // const { data } = await api.get("/messages/" + ticketId, {
+          const { data } = await api.get("/messagesNovo/" + ticketId, {
             params: { pageNumber },
           });
 
