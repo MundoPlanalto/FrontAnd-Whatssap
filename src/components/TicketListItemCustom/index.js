@@ -425,7 +425,9 @@ const useStyles = makeStyles((theme) => ({
                         color: blue[700],
                         cursor: "pointer",
                         marginLeft: 10,
-                        verticalAlign: "middle"
+                        position: "absolute",
+                        verticalAlign: "middle",
+                        zIndex: 999
                       }}
                     />
                   </Tooltip>
